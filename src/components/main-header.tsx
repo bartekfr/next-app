@@ -1,16 +1,19 @@
+'use client';
+
 import Link from 'next/link';
+import { Header, Nav, Logo } from './styled';
 
 import logoImg from '@/assets/logo.png';
 
 export default function MainHeader() {
   return (
-    <header>
-      <Link href="/">
+    <Header>
+      <Logo href="/">
         <img src={logoImg.src} alt="A plate with food on it" />
         NextLevel Food
-      </Link>
+      </Logo>
 
-      <nav>
+      <Nav>
         <ul>
           <li>
             <Link href="/meals">Browse Meals</Link>
@@ -19,7 +22,7 @@ export default function MainHeader() {
             <Link href="/community">Foodies Community</Link>
           </li>
         </ul>
-      </nav>
-    </header>
+      </Nav>
+    </Header>
   );
 }
