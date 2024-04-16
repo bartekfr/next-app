@@ -1,3 +1,4 @@
+import StyledComponentsRegistry from '@/lib/registry'
 import MainHeader from '@/components/main-header';
 import './globals.css';
 
@@ -36,7 +37,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
           </svg>
         </div>
         <MainHeader />
-        {children}
+        <StyledComponentsRegistry>
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
