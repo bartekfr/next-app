@@ -69,3 +69,12 @@ export const Logo = styled(Link)`
     filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0, 0.5));
   }
 `
+
+export const HeaderBackground = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 320px;
+  top: 0;
+  left: 0;
+  z-index: -1;
+`
