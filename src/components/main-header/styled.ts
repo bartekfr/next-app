@@ -23,30 +23,6 @@ export const Nav = styled.nav`
     font-size: 1.25rem;
   }
 
-  a {
-    text-decoration: none;
-    color: #ddd6cb;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-  }
-
-  a:hover,
-  a:active {
-    background: linear-gradient(90deg, #ff8a05, #f9b331);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 18px rgba(248, 190, 42, 0.8);
-  }
-
-  .active {
-    background: linear-gradient(90deg, #ff8a05, #f9b331);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
 `
 
 export const Logo = styled(Link)`
@@ -77,4 +53,32 @@ export const HeaderBackground = styled.div`
   top: 0;
   left: 0;
   z-index: -1;
+`
+
+export const NavLinkStyled = styled(Link)<{
+  $active: boolean
+}>`
+
+  text-decoration: none;
+  color: #ddd6cb;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+
+  &:hover,
+  &:active {
+    background: linear-gradient(90deg, #ff8a05, #f9b331);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 18px rgba(248, 190, 42, 0.8);
+  }
+
+  ${props => props.$active && `
+    background: linear-gradient(90deg, #ff8a05, #f9b331);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    `
+  }
 `
