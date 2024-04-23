@@ -1,4 +1,5 @@
-import MealItem, { Meal } from './meal-item'
+import MealItem from './meal-item'
+import { Meal } from '@/types'
 import classes from './meals.module.css'
 
 interface MealsGridProps {

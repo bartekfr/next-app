@@ -3,17 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import classes from './meal-item.module.css';
-type ImageType = React.ComponentProps<typeof Image>
-
-export interface Meal {
-  id:  number
-  title: string
-  slug: string
-  summary: string
-  creator: string
-  image: ImageType['src']
-}
-
+import { Meal } from '@/types'
 
 export default function MealItem({ title, slug, image, summary, creator }: Meal) {
   return (
