@@ -1,29 +1,25 @@
-'use client';
 import Link from 'next/link';
 
-import * as Styled from './page-styled'
-import ImageSlideshow from '@/components/images/slideshow';
+import classes from './page.module.css';
 
 export default function Home() {
   return (
     <>
-      <Styled.Header>
-        <Styled.Slideshow>
-          <ImageSlideshow />
-        </Styled.Slideshow>
+      <header className={classes.header}>
+        <div className={classes.slideshow}></div>
         <div>
-          <Styled.Hero>
+          <div className={classes.hero}>
             <h1>NextLevel Food for NextLevel Foodies</h1>
             <p>Taste & share food from all over the world.</p>
-          </Styled.Hero>
-          <Styled.Cta>
+          </div>
+          <div className={classes.cta}>
             <Link href="/community">Join the Community</Link>
             <Link href="/meals">Explore Meals</Link>
-          </Styled.Cta>
+          </div>
         </div>
-      </Styled.Header>
+      </header>
       <main>
-        <Styled.Section>
+        <section className={classes.section}>
           <h2>How it works</h2>
           <p>
             NextLevel Food is a platform for foodies to share their favorite
@@ -34,9 +30,9 @@ export default function Home() {
             NextLevel Food is a place to discover new dishes, and to connect
             with other food lovers.
           </p>
-        </Styled.Section>
+        </section>
 
-        <Styled.Section>
+        <section className={classes.section}>
           <h2>Why NextLevel Food?</h2>
           <p>
             NextLevel Food is a platform for foodies to share their favorite
@@ -47,7 +43,7 @@ export default function Home() {
             NextLevel Food is a place to discover new dishes, and to connect
             with other food lovers.
           </p>
-        </Styled.Section>
+        </section>
       </main>
     </>
   );
