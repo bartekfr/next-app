@@ -23,10 +23,9 @@ export default function MealsPage() {
         </p>
       </header>
       <main className={classes.main}>
-        <Suspense fallback={<div className={classes.loading}>Loading...</div>}>
+        <Suspense fallback={<div className={classes.loading}>Loading...(Meals level loader)</div>}>
           <Meals />
         </Suspense>
-
       </main>
     </>
   );
