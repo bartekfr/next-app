@@ -8,3 +8,8 @@ export async function getMeals(): Promise<Meal[]> {
   // throw new Error('Fail')
   return db.prepare('SELECT * FROM MEALS').all() as Meal[];
 }
+
+export function getMeal(slug: string): Meal | undefined {
+  console.log('GET MEAL', slug)
+  return db.prepare('SELECT * FROM MEALS WHERE slug =?').get(slug) as Meal | undefined;
+}

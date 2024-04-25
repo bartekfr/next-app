@@ -7,6 +7,8 @@ export interface Meal {
   title: string
   slug: string
   summary: string
+  instructions: string
   creator: string
+  creator_email: string
   image: ImageType['src']
 }
