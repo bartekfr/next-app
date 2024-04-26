@@ -2,6 +2,7 @@ import classes from './page.module.css'
 import Image from 'next/image';
 import { getMeal } from '@/lib/meals';
 import { Suspense } from 'react';
+import { notFound } from 'next/navigation';
 
 interface PageParams {
   mealSlug: string
@@ -15,7 +16,7 @@ async function Meal({ params }: MealPageProps) {
   const meal = await getMeal(params.mealSlug)
 
   if (!meal) {
-    return null
+    notFound()
   }
 
   const instructions = meal.instructions.replace(/\n/g, '<br />')
