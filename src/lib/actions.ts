@@ -2,6 +2,7 @@
 
 import { MakeNullable } from '@/lib/utils';
 import { MealInput } from '@/types'
+import { saveMeal } from './meals';
 
 export async function shareMeal(formData: FormData) {
   const meal: MealInput = {
@@ -13,6 +14,6 @@ export async function shareMeal(formData: FormData) {
     image: formData.get('image') as File,
   }
 
-  console.log(meal)
+  saveMeal(meal)
 
 }

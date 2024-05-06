@@ -1,4 +1,5 @@
 import sql from 'better-sqlite3'
+import  fs from 'node:fs'
 import slugify from 'slugify'
 import xss from 'xss'
 import { Meal, MealInput } from '@/types'
@@ -17,14 +18,33 @@ export async function getMeal(slug: string): Promise<Meal> {
   return db.prepare('SELECT * FROM MEALS WHERE slug =?').get(slug) as Meal;
 }
 
+type MealWithoutId = Omit<Meal, 'id'>
+
 export async function saveMeal(mealData: MealInput) {
-  const meal: Meal = {
+  const meal: MealWithoutId = {
     ...mealData,
-    id: 0, // TODO: add later
     slug: slugify(mealData.title, { lower: true }),
     instructions: xss(mealData.instructions),
     image: '/' // TODO: add later
   }
 
-  return meal
+  const extension = mealData.image.name.split('.').pop()
+  const fileName = `${meal.slug}.${extension}`
+
+  const stream = fs.createWriteStream(`public/images/${fileName}`)
+  const bufferedImage = await mealData.image.arrayBuffer()
+  stream.write(Buffer.from(bufferedImage), (error) => {
+    if (error) {
+      throw new Error('Image upload failed')
+    }
+  })
+
+  meal.image = `/images/${fileName}`
+
+  db.prepare(`
+    INSERT INTO meals
+      (title, creator, creator_email, summary, slug, instructions, image)
+    VALUES
+      (@title, @creator, @creator_email, @summary, @slug, @instructions, @image)
+  `).run(meal)
 }
