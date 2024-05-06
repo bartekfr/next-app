@@ -14,6 +14,6 @@ export async function shareMeal(formData: FormData) {
     image: formData.get('image') as File,
   }
 
-  saveMeal(meal)
+  await saveMeal(meal)
 
 }
