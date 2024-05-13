@@ -4,6 +4,7 @@ import { MakeNullable } from '@/lib/utils';
 import { MealInput } from '@/types'
 import { saveMeal } from './meals';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 export async function shareMeal(prevState: any, formData: FormData) {
   const meal: MealInput = {
@@ -24,6 +25,7 @@ export async function shareMeal(prevState: any, formData: FormData) {
   }
 
   await saveMeal(meal)
+  revalidatePath('/meals')
   redirect('/meals')
 
   return {
